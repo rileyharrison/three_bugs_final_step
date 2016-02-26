@@ -56,23 +56,6 @@ var newEl, newText, position;
 position = document.getElementById('content');
 
 
-// function buildEmployees(){
-//   //Loop the array, extracting each array and writing information to the DOM
-//   //Note that the information is not 'clean'
-//   for(var i = 0; i < array.length; i++){
-//     //BUG 1: missing [i] after second array call
-//     array[i].validate();
-
-//     //console.log(array[i]);
-
-// 	 array[i] = calculateSTI(array[i]);
-//  	  newEl = document.createElement('li');
-// 	 newText = document.createTextNode(array[i]);
-// 	 newEl.appendChild(newText);
-// 	 position.appendChild(newEl);
-//   }
-
-// }
 
 
 function buildEmployees2(){
@@ -96,60 +79,15 @@ function buildEmployees2(){
 
 }
 
-buildEmployees2();
+
+// Ideally this block of code should be in the document ready event
+$(document).ready(function(){
+
+  buildEmployees2();
+});
 
 
-
-function calculateSTI(object){
-
-  var newArray = [];
-
-  newArray[0] =  object.name ;
-
-  console.log("new array 0=" + newArray[0]);
-  console.log(object.id);
-
-  var employeeNumber = object.id;
-
-  var baseSalary = object.salary;
-  var reviewScore =object.rating;
-
-  var bonus = getBaseSTI(reviewScore) + getYearAdjustment(employeeNumber) - getIncomeAdjustment(baseSalary);
-  if(bonus > 0.13){
-    bonus = 0.13;
-  }
-
-  newArray[1] = "  " + bonus;
-  //BUG 2: add Math.round
-  newArray[2] = "  " + Math.round(baseSalary * (1.0 + bonus));
-  newArray[3] = "  " + Math.round(baseSalary * bonus);
-
-// if 1 2 3 not numbers then set them as strings
-  //for ( var i = 1; i < newArray.length; i++){
-
-  
-
-
-  //}
-
-  if (isNaN(newArray[1])){
-      newArray[1]="some string";
-  }
-
-    if (isNaN(newArray[2])){
-      newArray[2]="some string";
-  }
-
-  if (isNaN(newArray[3])){
-      newArray[3]="some string";
-  }
-
-
-  console.log(newArray[0] + " " + newArray[1] + " " + newArray[2] + " " + newArray[3]);
-  return newArray;
-
-
-}
+// 
 
 function calculateSTI2(object){
 
@@ -257,7 +195,7 @@ function appendDom(object, myIndex){
     $('.container').append('<div class="person2"></div>');
 
   }
-  //$('.container').append('<div class="person"></div>');
+
 
   var $el = $('.container').children().last();
 
@@ -267,7 +205,5 @@ function appendDom(object, myIndex){
   $el.append('<p>' + "Bonus Percent:  " +object.bonusPercent + '%</p>');
   $el.append('<p>' + "Total Compensation:  $" +object.totalComp + '</p>');
   $el.append('<p>' + "Bonus Amount:  $"  +object.bonusAmount + '</p>');
-  // $el.append('<p>' + object.position + '</p>');
-  // $el.append('<p>' + object.salary + '</p>');
-  // $el.append('<p>' + object.rating + '</p>');
+  
 }

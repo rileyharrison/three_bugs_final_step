@@ -1,18 +1,14 @@
 // ! ! !
 // Three Bugs
 
-
 //object constructor
-
 function Employee(empName, empBonusPercent, empTotalComp, empBonusAmount){
 
   this.name = empName;
   this.bonusPercent = empBonusPercent;
   this.totalComp = empTotalComp;
   this.bonusAmount = empBonusAmount
-
 }
-
 
 function People(empName, empNumber, empSalary, empRating){
 
@@ -34,12 +30,7 @@ function People(empName, empNumber, empSalary, empRating){
     if (this.rating == undefined){
       this.rating = "rating not entered"
     }
-
   }
-  
-
-
-
 }
 
 var atticus = new People("Atticus", "2405", "47000", 3);
@@ -47,47 +38,33 @@ var jem = new People("Jem", "62347", "63500", 4);
 var boo = new People("Boo", "11435", "54000", 3);
 var scout = new People("Scout", "6243", "74750", 5);
 
-
 var array = [atticus, jem, boo, scout];
 
 //Create variables used to write to the DOM
 var newEl, newText, position;
+
 //Capture the position of insertion into the DOM
 position = document.getElementById('content');
 
-
-
-
 function buildEmployees2(){
+
   //Loop the array, extracting each array and writing information to the DOM
   //Note that the information is not 'clean'
   for(var i = 0; i < array.length; i++){
     //BUG 1: missing [i] after second array call
     array[i].validate();
-
     console.log(array[i]);
-
     var myObject = calculateSTI2(array[i]);
-
     console.log(myObject);
-
     appendDom(myObject, i);
-
-   
-
   }
-
 }
-
-
 // Ideally this block of code should be in the document ready event
 $(document).ready(function(){
 
   buildEmployees2();
 });
 
-
-// 
 
 function calculateSTI2(object){
 
@@ -113,13 +90,7 @@ function calculateSTI2(object){
   newArray[2] = "  " + Math.round(baseSalary * (1.0 + bonus));
   newArray[3] = "  " + Math.round(baseSalary * bonus);
 
-// if 1 2 3 not numbers then set them as strings
-  //for ( var i = 1; i < newArray.length; i++){
 
-  
-
-
-  //}
 
   if (isNaN(newArray[1])){
       newArray[1]="some string";

@@ -195,6 +195,8 @@ function calculateSTI2(object){
       newArray[3]="some string";
   }
 
+  newArray[1]*=100;
+
 
   var newObject = new Employee(newArray[0], newArray[1], newArray[2], newArray[3])
 
@@ -262,7 +264,7 @@ function appendDom(object, myIndex){
 
 
   $el.append('<p>' + "Employee Name:  " + object.name + '</p>');
-  $el.append('<p>' + "Bonus Percent:  " +object.bonusPercent + '</p>');
+  $el.append('<p>' + "Bonus Percent:  " +object.bonusPercent + '%</p>');
   $el.append('<p>' + "Total Compensation:  $" +object.totalComp + '</p>');
   $el.append('<p>' + "Bonus Amount:  $"  +object.bonusAmount + '</p>');
   // $el.append('<p>' + object.position + '</p>');
